@@ -18,9 +18,9 @@ dependencies = [
 ]
 
 [project.urls]
-Documentation = "https://github.com/EliasChokeir/udp-secure-chat#readme"
-Issues = "https://github.com/EliasChokeir/udp-secure-chat/issues"
-Source = "https://github.com/EliasChokeir/udp-secure-chat"
+Documentation = "https://github.com/EliasChokeir/udpsecurechat#readme"
+Issues = "https://github.com/EliasChokeir/udpsecurechat/issues"
+Source = "https://github.com/EliasChokeir/udpsecurechat"
 
 [tool.hatch.version]
 path = "src/udpsecurechat/__init__.py"
@@ -29,6 +29,8 @@ path = "src/udpsecurechat/__init__.py"
 packages = ["src/udpsecurechat"]
 
 [tool.hatch.envs.default]
+type = "virtual"
+installer = "uv"
 dependencies = [
   "pycryptodome",
 ]
@@ -38,7 +40,7 @@ run-server = "python -m udpsecurechat.server"
 run-client = "python -m udpsecurechat.client"
 
 [tool.coverage.run]
-source_pkgs = ["udpsecurechat"]
+source_pkgs = ["udpsecurechat", "tests"]
 branch = true
 parallel = true
 omit = [
