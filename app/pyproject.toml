@@ -1,0 +1,57 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "udpsecurechat"
+version = "0.1.0"
+description = "A UDP-based secure chat application for COMPE 560."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+keywords = ["UDP", "chat", "encryption", "RSA", "AES", "Python"]
+authors = [
+  { name = "Elias Chokeir", email = "ltpie12345+github@gmail.com" },
+]
+dependencies = [
+  "pycryptodome>=3.0.0",
+]
+
+[project.urls]
+Documentation = "https://github.com/EliasChokeir/udp-secure-chat#readme"
+Issues = "https://github.com/EliasChokeir/udp-secure-chat/issues"
+Source = "https://github.com/EliasChokeir/udp-secure-chat"
+
+[tool.hatch.version]
+path = "src/udpsecurechat/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/udpsecurechat"]
+
+[tool.hatch.envs.default]
+dependencies = [
+  "pycryptodome",
+]
+
+[tool.hatch.envs.default.scripts]
+run-server = "python -m udpsecurechat.server"
+run-client = "python -m udpsecurechat.client"
+
+[tool.coverage.run]
+source_pkgs = ["udpsecurechat"]
+branch = true
+parallel = true
+omit = [
+  "src/udpsecurechat/__init__.py",
+]
+
+[tool.coverage.paths]
+src = ["src/udpsecurechat", "*/app/src/udpsecurechat"]
+tests = ["tests", "*/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "pragma: no cover",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
