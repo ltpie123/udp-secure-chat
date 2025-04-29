@@ -48,26 +48,38 @@ def handle_messages(sock: socket.socket):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="UDP Secure Chat Server")
+    parser = argparse.ArgumentParser(description="UDP Secure Chat Client")
     parser.add_argument(
-        "--host", default="0.0.0.0", help="Host to bind to (default: 0.0.0.0)"
+        "--host", default="localhost", help="Server host (default: localhost)"
     )
     parser.add_argument(
-        "--port", type=int, default=12345, help="Port to bind to (default: 12345)"
+        "--port", type=int, default=12345, help="Server port (default: 12345)"
     )
     args = parser.parse_args()
 
+    server_addr = (args.host, args.port)
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.bind((args.host, args.port))
 
-    print(f"🚀 UDP Secure Chat Server started at {args.host}:{args.port}")
-    threading.Thread(target=handle_messages, args=(sock,), daemon=True).start()
+    # Step 1: Generate and send RSA public key
+    private_key, public_key = generate_rsa_keypair()
+    sock.sendto(base64.b64encode(public_key), server_addr)
 
+    # Step 2: Start thread to receive messages
+    threading.Thread(
+        target=receive_messages, args=(sock, private_key), daemon=True
+    ).start()
+
+    # Step 3: Loop to send messages
     try:
         while True:
-            input()  # Keep the main thread alive
+            msg = input("You: ")
+            if aes_key:
+                encrypted = encrypt_with_aes(aes_key, msg)
+                sock.sendto(encrypted.encode(), server_addr)
+            else:
+                print("⏳ Waiting for AES key exchange to complete...")
     except KeyboardInterrupt:
-        print("\n🛑 Server shutting down.")
+        print("\n👋 Exiting chat.")
 
 
 if __name__ == "__main__":
