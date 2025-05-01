@@ -10,12 +10,8 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = { text = "MIT" }
 keywords = ["UDP", "chat", "encryption", "RSA", "AES", "Python"]
-authors = [
-  { name = "Elias Chokeir", email = "ltpie12345+github@gmail.com" },
-]
-dependencies = [
-  "pycryptodome>=3.0.0",
-]
+authors = [{ name = "Elias Chokeir", email = "ltpie12345+github@gmail.com" }]
+dependencies = ["pycryptodome>=3.0.0"]
 
 [project.urls]
 Documentation = "https://github.com/EliasChokeir/udpsecurechat#readme"
@@ -31,21 +27,17 @@ packages = ["src/udpsecurechat"]
 [tool.hatch.envs.default]
 type = "virtual"
 installer = "uv"
-dependencies = [
-  "pycryptodome",
-]
+dependencies = ["pycryptodome"]
 
 [tool.hatch.envs.default.scripts]
-run-server = "python -m udpsecurechat.server"
-run-client = "python -m udpsecurechat.client"
+run-server = "PYTHONPATH=src python -m udpsecurechat.server"
+run-client = "PYTHONPATH=src python -m udpsecurechat.client"
 
 [tool.coverage.run]
 source_pkgs = ["udpsecurechat", "tests"]
 branch = true
 parallel = true
-omit = [
-  "src/udpsecurechat/__init__.py",
-]
+omit = ["src/udpsecurechat/__init__.py"]
 
 [tool.coverage.paths]
 src = ["src/udpsecurechat", "*/app/src/udpsecurechat"]
@@ -53,7 +45,7 @@ tests = ["tests", "*/tests"]
 
 [tool.coverage.report]
 exclude_lines = [
-  "pragma: no cover",
-  "if __name__ == .__main__.:",
-  "if TYPE_CHECKING:",
+   "pragma: no cover",
+   "if __name__ == .__main__.:",
+   "if TYPE_CHECKING:",
 ]
