@@ -28,7 +28,7 @@ A secure chat application that uses UDP for communication with RSA and AES encry
 ```console
 # Clone the repository
 git clone https://github.com/EliasChokeir/udp-secure-chat.git
-cd app
+cd udp-secure-chat/app
 
 # Install with hatch
 pip install hatch
@@ -40,7 +40,7 @@ hatch env create
 ```console
 # Clone the repository
 git clone https://github.com/EliasChokeir/udp-secure-chat.git
-cd app
+cd udp-secure-chat/app
 
 # Install with uv
 pip install uv
@@ -53,7 +53,7 @@ uv sync
 ```console
 # Clone the repository
 git clone https://github.com/EliasChokeir/udp-secure-chat.git
-cd app
+cd udp-secure-chat/app
 
 # Create a virtual environment
 python -m venv .venv
