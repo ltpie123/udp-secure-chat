@@ -101,6 +101,11 @@ hatch run run-client
 - Python 3.8+
 - pycryptodome (for cryptographic operations)
 
+## Protocol Diagram
+
+![Link](https://www.mermaidchart.com/raw/4491645e-f8eb-4af7-8e88-77ee9e3b2c6f?theme=light&version=v0.1&format=svg)
+
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details.
