@@ -1,7 +1,6 @@
 /home/hi/School/COMPE560/udp-secure-chat/app/src/udpsecurechat/__pycache__
 
 # Python
-__pycache__/
-/udpsecurechat/__pycache__
+*/src/udpsecurechat/__pycache__
 *.py[cod]
 *$py.class
