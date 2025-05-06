@@ -8,7 +8,7 @@ A secure chat application that uses UDP for communication with RSA and AES encry
 ## Features
 
 - **UDP-based communication**: Lightweight, fast message exchange
-- **Hybrid encryption**: 
+- **Hybrid encryption**:
   - RSA for secure key exchange
   - AES for efficient message encryption
 - **Multi-client support**: Chat with multiple users simultaneously
@@ -45,7 +45,7 @@ cd udpsecurechat/app
 # Install with uv
 pip install uv
 uv venv
-uv pip install -e .
+uv sync
 ```
 
 ### Option 3: Traditional pip
@@ -68,11 +68,8 @@ pip install -e .
 ### Starting the Server
 
 ```console
-# Using hatch
+# Using hatch shell
 hatch run run-server
-
-# Alternative method
-python -m udpsecurechat.server
 ```
 
 By default, the server listens on all interfaces (0.0.0.0) on port 12345.
@@ -80,21 +77,14 @@ By default, the server listens on all interfaces (0.0.0.0) on port 12345.
 ### Starting a Client
 
 ```console
-# Using hatch
-hatch run run-client [server_host] [server_port] [username]
-
-# Alternative method
-python -m udpsecurechat.client [server_host] [server_port] [username]
-```
-
-Example:
-```console
-python -m udpsecurechat.client localhost 12345 Alice
+# Using hatch shell
+hatch run run-client
 ```
 
 ## How It Works
 
 1. **Key Exchange**:
+
    - When a client connects, it generates an RSA key pair
    - The client sends its public key to the server
    - The server generates an AES session key for the client
