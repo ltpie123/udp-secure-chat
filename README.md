@@ -31,7 +31,7 @@ git clone https://github.com/ltpie123/udp-secure-chat.git
 cd udp-secure-chat/app
 
 # Install with hatch
-pip install hatch
+pip install --user hatch
 hatch env create
 ```
 
@@ -43,7 +43,7 @@ git clone https://github.com/ltpie123/udp-secure-chat.git
 cd udp-secure-chat/app
 
 # Install with uv
-pip install uv
+pip install --user uv
 uv venv
 uv sync
 ```
